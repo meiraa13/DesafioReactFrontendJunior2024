@@ -1,17 +1,33 @@
+import { useContext, useEffect, useState } from "react"
 import "./styles.scss"
+import { TodoContext } from "../../providers/TodoContext"
 
 export function Filters(){
+    const { setTodos, todos } = useContext(TodoContext)
+    const [leftItem, setLeftItem] = useState(0)
+
+    useEffect(()=>{
+        const remainingItems = todos.filter((todo)=> todo.isDone === false)
+        setLeftItem(remainingItems.length)
+
+    },[todos])
+
+    function clearCompletedTasks(){
+        const uncompletedTasks = todos.filter((todo)=> todo.isDone === false)
+        setTodos(uncompletedTasks)
+
+    }
 
 
     return (
         <div className="div-filters">
-            <p>1 item left!</p>
+            <p>{leftItem} item left!</p>
             <div className="div-buttons">
                 <button>All</button>
                 <button>Active</button>
                 <button>Completed</button>
             </div>
-            <button>Clear Completed</button>
+            <button onClick={clearCompletedTasks}>Clear Completed</button>
         </div>
     )
 }

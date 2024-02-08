@@ -18,14 +18,22 @@ export function Form(){
             isDone:false
 
         }
-        setTodos([...todos, newData])
+        setTodos([ newData, ...todos])
         setFormData("")
-       
     }
+
+    function completeAllTasks(){
+        const completedTasks = todos.map((todo)=>{
+            todo.isDone = true
+            return todo
+        })
+        setTodos(completedTasks)
+    }
+       
 
     return (
         <form onSubmit={handleSubmit}>
-            <button type="button">+</button>
+            <button onClick={completeAllTasks} type="button">+</button>
             <input type="text" value={formData} onChange={(e)=> setFormData(e.target.value)} placeholder="What needs to be done?" />
         </form>
     )
