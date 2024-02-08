@@ -1,0 +1,28 @@
+form {
+
+    border: 1px solid #ececec;
+    display: flex;
+
+   
+    input {
+        width: 100%;
+        font-style: italic;
+        font-size: 25px;
+        padding: 0.5rem;
+        border: none;
+    }
+
+    input:focus{
+        border-color: red;
+    }
+
+    button {
+        width: 40px;
+      
+    }
+
+
+}
+
+
+
