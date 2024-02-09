@@ -4,7 +4,7 @@ import { TodoContext } from "../../providers/TodoContext"
 
 export function Filters(){
     const { setTodos, todos } = useContext(TodoContext)
-    const [leftItem, setLeftItem] = useState(0)
+    const [leftItem, setLeftItem] = useState<number>(0)
 
     useEffect(()=>{
         const remainingItems = todos.filter((todo)=> todo.isDone === false)
@@ -15,19 +15,26 @@ export function Filters(){
     function clearCompletedTasks(){
         const uncompletedTasks = todos.filter((todo)=> todo.isDone === false)
         setTodos(uncompletedTasks)
-
     }
 
-
     return (
-        <div className="div-filters">
-            <p>{leftItem} item left!</p>
-            <div className="div-buttons">
-                <button>All</button>
-                <button>Active</button>
-                <button>Completed</button>
-            </div>
-            <button onClick={clearCompletedTasks}>Clear Completed</button>
-        </div>
+        <>
+            {todos.length > 0 &&
+                
+                <div className="div-filters">
+                    <p>{leftItem} item left!</p>
+                    <div className="div-buttons">
+                        <button>All</button>
+                        <button>Active</button>
+                        <button>Completed</button>
+                    </div>
+                    <button onClick={clearCompletedTasks}>Clear Completed</button>
+                </div>
+            }
+        </>
     )
 }
+            
+        
+        
+        

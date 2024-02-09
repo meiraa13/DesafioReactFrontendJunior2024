@@ -9,7 +9,7 @@ export function Form(){
     const [formData, setFormData] = useState("")
     const { setTodos, todos } = useContext(TodoContext)
 
-    function handleSubmit(e:any){
+    function handleSubmit(e:React.FormEvent<EventTarget>){
         e.preventDefault()
 
         const newData = {
