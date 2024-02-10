@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react"
 import { api } from "../services/api"
 
+
 export interface ITodo{
     id:string,
     isDone:boolean,
@@ -13,7 +14,9 @@ interface IChildren{
 
 interface ITodoContext {
     todos:ITodo[],
-    setTodos:React.Dispatch<React.SetStateAction<ITodo[]>>
+    setTodos:React.Dispatch<React.SetStateAction<ITodo[]>>,
+    currentFilter:ITodo[],
+    setFilteredItems:React.Dispatch<any>
 
 }
 
@@ -21,6 +24,20 @@ export const TodoContext = createContext({} as ITodoContext)
 
 export function TodoProvider({children}:IChildren){
     const [todos, setTodos] = useState<ITodo[]>([])
+    const [filteredItems, setFilteredItems] = useState<string>("")
+
+    const currentFilter = todos.filter((todo)=>{
+        if(filteredItems === "all" || filteredItems === ""){
+          
+            return true
+        }else if(filteredItems === "active"){
+        
+            return todo.isDone === false
+        }else {
+            return todo.isDone === true
+        }
+
+    })
 
 
     useEffect(()=>{
@@ -38,9 +55,10 @@ export function TodoProvider({children}:IChildren){
 
     },[])
 
+   
 
     return (
-        <TodoContext.Provider value={{setTodos, todos}}>
+        <TodoContext.Provider value={{setTodos, todos, currentFilter, setFilteredItems}}>
             {children}
         </TodoContext.Provider>
     )

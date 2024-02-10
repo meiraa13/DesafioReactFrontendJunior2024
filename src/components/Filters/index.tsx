@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import "./styles.scss"
 import { TodoContext } from "../../providers/TodoContext"
+import { Link } from "react-router-dom"
 
 export function Filters(){
     const { setTodos, todos } = useContext(TodoContext)
@@ -17,6 +18,9 @@ export function Filters(){
         setTodos(uncompletedTasks)
     }
 
+  
+
+
     return (
         <>
             {todos.length > 0 &&
@@ -24,9 +28,10 @@ export function Filters(){
                 <div className="div-filters">
                     <p>{leftItem} item left!</p>
                     <div className="div-buttons">
-                        <button>All</button>
-                        <button>Active</button>
-                        <button>Completed</button>
+                        <Link className="link-btn" to="/all">All</Link>
+                        <Link className="link-btn" to="/active">Active</Link>
+                        <Link className="link-btn" to="/completed">Completed</Link>
+                 
                     </div>
                     <button onClick={clearCompletedTasks}>Clear Completed</button>
                 </div>

@@ -3,19 +3,22 @@ import "./styles.scss"
 import { ITodo, TodoContext } from "../../providers/TodoContext"
 
 export function Todos(){
-    const { todos, setTodos } = useContext(TodoContext)
+    const { todos, setTodos, currentFilter } = useContext(TodoContext)
     const [editId, setEditId] = useState<null | string>(null)
     const [editData, setEditData] = useState("")
 
-    function updateStatus(index:number){
-        const newTodos = todos.map((todo,currentIndex)=>{
-            if(currentIndex === index){
+    function updateStatus(id:string){
+        const newTodos = todos.map((todo)=>{
+            if(todo.id === id){
+               
                 return {...todo, isDone:!todo.isDone}
             }else {
+                
                 return todo
             }
         })
         setTodos(newTodos)
+
     }
 
     function deleteTask(id:string){
@@ -38,13 +41,13 @@ export function Todos(){
     return (
         <ul>
             {
-                todos.map((todo, index)=>(
+                currentFilter.map((todo)=>(
                     <li key={todo.id}>
                         <div>
                             <input 
                             type="checkbox" 
                             checked={todo.isDone} 
-                            onChange={()=> updateStatus(index)} 
+                            onChange={()=> updateStatus(todo.id)} 
                             />
                             {
                                 editId === todo.id?
