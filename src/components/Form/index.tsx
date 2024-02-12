@@ -11,6 +11,9 @@ export function Form(){
 
     function handleSubmit(e:React.FormEvent<EventTarget>){
         e.preventDefault()
+        if(formData === ""){
+            return
+        }
 
         const newData = {
             id:uuid(),
@@ -33,7 +36,7 @@ export function Form(){
 
     return (
         <form onSubmit={handleSubmit}>
-            <button onClick={completeAllTasks} type="button">+</button>
+            <button onClick={completeAllTasks} className="arrow-btn" type="button"></button>
             <input type="text" value={formData} onChange={(e)=> setFormData(e.target.value)} placeholder="What needs to be done?" />
         </form>
     )

@@ -2,27 +2,30 @@ form {
 
     border: 1px solid #ececec;
     display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    gap: 1rem;
 
    
     input {
         width: 100%;
         font-style: italic;
         font-size: 25px;
-        padding: 0.5rem;
         border: none;
     }
 
     input:focus{
         border-color: red;
-    }
-
-    button {
-        width: 40px;
-      
-    }
-
+    } 
 
 }
 
-
+.arrow-btn {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-image: url("../../assets/grey-down-arrow-icon-png-1.webp");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
 

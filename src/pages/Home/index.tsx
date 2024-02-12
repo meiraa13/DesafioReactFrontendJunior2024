@@ -1,4 +1,5 @@
 import { Filters } from "../../components/Filters";
+import { Footer } from "../../components/Footer";
 import { Form } from "../../components/Form";
 import { Todos } from "../../components/Todos";
 
@@ -13,6 +14,7 @@ export function Home(){
                 <Todos />
                 <Filters />
             </div>
+            <Footer />
         </>
     )
 }

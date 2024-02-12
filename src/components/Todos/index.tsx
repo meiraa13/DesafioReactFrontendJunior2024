@@ -33,9 +33,13 @@ export function Todos(){
 
     function editField(e:React.FormEvent){
         e.preventDefault()
+        if(editData === ""){
+            return
+        }
         const currentField:ITodo[] = todos.filter((todo)=>todo.id === editId)
         currentField[0].title = editData
         setEditId(null)
+        setEditData("")
     }
 
     return (
@@ -55,11 +59,11 @@ export function Todos(){
                                     <input onChange={(e)=>setEditData(e.target.value)} />
                                 </form>
                                 :
-                                <p 
+                                <label 
                                 onDoubleClick={()=>handleDoubleClick(todo.id)} 
                                 className={todo.isDone?"checked":""}
                                 >{todo.title}
-                                </p>
+                                </label>
                             }
                         </div>
                         <button onClick={()=>deleteTask(todo.id)}>X</button>

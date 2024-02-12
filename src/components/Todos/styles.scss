@@ -12,6 +12,7 @@ ul {
         div {
             display: flex;
             gap: 1rem;
+            align-items: center;
         }
 
         button {
@@ -32,4 +33,18 @@ ul {
 .checked {
     text-decoration: line-through;
     color: gray;
+}
+
+input[type="checkbox"]{
+    appearance: none;
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 1px solid gray;
+    border-radius: 100%;
+}
+
+input[type="checkbox"]:checked {
+    background-image: url("../../assets/checkmark.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
 }
