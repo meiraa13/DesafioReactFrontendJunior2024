@@ -37,7 +37,12 @@ export function Form(){
     return (
         <form onSubmit={handleSubmit}>
             <button onClick={completeAllTasks} className="arrow-btn" type="button"></button>
-            <input type="text" value={formData} onChange={(e)=> setFormData(e.target.value)} placeholder="What needs to be done?" />
+            <input 
+            type="text" 
+            value={formData} 
+            onChange={(e)=> setFormData(e.target.value)} 
+            placeholder="What needs to be done?" 
+            />
         </form>
     )
 }

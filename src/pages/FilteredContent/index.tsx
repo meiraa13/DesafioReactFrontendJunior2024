@@ -4,6 +4,7 @@ import { Todos } from "../../components/Todos"
 import { Filters } from "../../components/Filters"
 import { useContext, useEffect } from "react"
 import { TodoContext } from "../../providers/TodoContext"
+import { Footer } from "../../components/Footer"
 
 
 
@@ -24,6 +25,7 @@ export function FilteredContent(){
             <Todos />
             <Filters />
         </div>
+        <Footer />
     </>
     )
 }
